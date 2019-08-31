@@ -10,9 +10,9 @@ public class OtogeFumen //他のスクリプトから参照されるのでMono..
     public int maxBlock;
     public int BPM;
     public int offset;
+  
     public struct notes
     {
-        public int x;
         public int[] LPB;
         public int[] num;
         public int[] block;

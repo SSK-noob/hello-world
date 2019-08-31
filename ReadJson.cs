@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 public class ReadJson : MonoBehaviour
 {
-    OtogeFumen fumen2 = new OtogeFumen();
     OtogeFumen.notes notes = new OtogeFumen.notes();
     public string _FilePath;
+    private string Jsonfumen;
     void Start()
     {
         OtogeFumen fumen = JsonConvert.DeserializeObject<OtogeFumen>(File.ReadAllText(_FilePath));
-        Debug.Log(notes.x);
+        using (StreamReader file = File.OpenText(_FilePath))
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            OtogeFumen fumen2 = (OtogeFumen)serializer.Deserialize(file, typeof(OtogeFumen));
+        }
+        JToken Jfumen = JToken.Parse(fumen.ToString());
     }
 
     void Update()
