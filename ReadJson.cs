@@ -12,11 +12,6 @@ public class ReadJson : MonoBehaviour
     void Start()
     {
         OtogeFumen fumen = JsonConvert.DeserializeObject<OtogeFumen>(File.ReadAllText(_FilePath));
-        using (StreamReader file = File.OpenText(_FilePath))
-        {
-            JsonSerializer serializer = new JsonSerializer();
-            OtogeFumen fumen2 = (OtogeFumen)serializer.Deserialize(file, typeof(OtogeFumen));
-        }
         Debug.Log(notes.x);
     }
 
